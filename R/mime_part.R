@@ -31,7 +31,9 @@
     name <- basename(fn)
 
   text <- base64encode(fn, linewidth=72, newline="\n")
-  headers <- list("Content-Type"=type,
+  #headers <- list("Content-Type"=type,
+  headers <- list("Content-ID"=sprintf("<%s>",name),
+                  "Content-Type"=type,
                   "Content-Disposition"=sprintf("%s; filename=%s",
                     disposition, name),
                   "Content-Transfer-Encoding"="base64")
