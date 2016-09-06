@@ -59,7 +59,8 @@
       writeLines(paste("Content-Type: ",content.type,"\r\n",sep=""), sock, sep="\r\n")
       
       # It is add for base64
-      ifelse("Content-Transfer-Encoding" %in% names(headers), writeLines(paste("Content-Transfer-Encoding : ",content.type,"\r\n",sep=""), sock, sep="\r\n"), writeLines("", sock, sep="\r\n"))
+      # ifelse("Content-Transfer-Encoding" %in% names(headers), writeLines(paste("Content-Transfer-Encoding : ",content.type,"\r\n",sep=""), sock, sep="\r\n"), writeLines("", sock, sep="\r\n"))
+      writeLines(paste("Content-Transfer-Encoding : base64\r\n",sep=""), sock, sep="\r\n")
       
       writeLines(part, sock, sep="\r\n")
     }
