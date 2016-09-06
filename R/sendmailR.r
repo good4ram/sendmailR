@@ -57,6 +57,10 @@
       ## writeLines(sprintf("--%s", boundary), sock, sep="\r\n")
       #writeLines("Content-Type: text/plain; format=flowed\r\n", sock, sep="\r\n")
       writeLines(paste("Content-Type: ",content.type,"\r\n",sep=""), sock, sep="\r\n")
+      
+      # It is add for base64
+      content.type <- ifelse("Content-Transfer-Encoding" %in% names(headers), writeLines(paste("Content-Transfer-Encoding : ",content.type,"\r\n",sep=""), sock, sep="\r\n"), "\r\n")
+      
       writeLines(part, sock, sep="\r\n")
     }
   }
